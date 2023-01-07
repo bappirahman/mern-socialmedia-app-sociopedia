@@ -5,8 +5,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
 
-const REACT_APP_API_URL = "";
-
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
@@ -14,16 +12,13 @@ const FriendListWidget = ({ userId }) => {
   const token = useSelector((state) => state.token);
 
   const getFriends = async () => {
-    const response = await fetch(
-      `${REACT_APP_API_URL}users/${userId}/friends`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`/users/${userId}/friends`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    });
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
   };

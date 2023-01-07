@@ -15,7 +15,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 import CommentWidget from "./CommentWidget";
-const REACT_APP_API_URL = "";
 
 const PostWidget = ({
   postId,
@@ -42,7 +41,7 @@ const PostWidget = ({
   const primary = palette.primary.main;
 
   const patchLike = async () => {
-    const response = await fetch(`${REACT_APP_API_URL}posts/${postId}/like`, {
+    const response = await fetch(`/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -54,17 +53,14 @@ const PostWidget = ({
     dispatch(setPost({ post: updatedPost }));
   };
   const handleComment = async () => {
-    const response = await fetch(
-      `${REACT_APP_API_URL}posts/${postId}/comment`,
-      {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ userId, comment }),
-      }
-    );
+    const response = await fetch(`/posts/${postId}/comment`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ userId, comment }),
+    });
     const data = await response.json();
     // console.log(data);
     // dispatch(setPosts({ posts: data }));
@@ -88,7 +84,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`${REACT_APP_API_URL}assets/${picturePath}`}
+          src={`/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">

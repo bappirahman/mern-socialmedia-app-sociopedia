@@ -8,7 +8,6 @@ import PostsWidget from "scenes/widgets/PostsWidget";
 import UserWidget from "scenes/widgets/UserWidget";
 import { useSelect } from "@mui/base";
 import { useSelector } from "react-redux";
-const REACT_APP_API_URL = "";
 
 const ProfilePage = () => {
   const [user, setUser] = useState();
@@ -16,7 +15,7 @@ const ProfilePage = () => {
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const getUser = async () => {
-    const response = await fetch(`${REACT_APP_API_URL}users/${userId}`, {
+    const response = await fetch(`/users/${userId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
