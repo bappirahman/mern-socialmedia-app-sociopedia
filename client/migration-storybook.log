@@ -1,0 +1,90 @@
+🔎 checking possible migrations..
+
+⚠️  failed to check fix nodejs-requirement
+
+Error: ❌ Unable to determine storybook version.
+🤔 Are you running automigrate from your project directory?
+    at Object.check (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:270:733)
+    at automigrate (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:284:696)
+    at doUpgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:2881)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async withTelemetry (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\core-server\dist\index.js:33:5533)
+    at async upgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:3167)
+
+⚠️  failed to check fix cra5
+
+Error: ❌ Unable to determine storybook version.
+🤔 Are you running automigrate from your project directory?
+    at Object.checkWebpack5Builder (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:53:5399)
+    at Object.check (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:71:946)
+    at automigrate (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:284:696)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async doUpgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:2875)
+    at async withTelemetry (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\core-server\dist\index.js:33:5533)
+    at async upgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:3167)
+Unable to find storybook main.js config, skipping
+Unable to find storybook main.js config
+
+⚠️  failed to check fix storybook-binary
+
+Error: ❌ Unable to determine storybook version.
+🤔 Are you running automigrate from your project directory?
+    at Object.check (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:138:971)
+    at automigrate (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:284:696)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async doUpgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:2875)
+    at async withTelemetry (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\core-server\dist\index.js:33:5533)
+    at async upgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:3167)
+
+⚠️  failed to check fix sb-scripts
+
+Error: ❌ Unable to determine storybook version.
+🤔 Are you running automigrate from your project directory?
+    at Object.check (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:124:2121)
+    at automigrate (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:284:696)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async doUpgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:2875)
+    at async withTelemetry (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\core-server\dist\index.js:33:5533)
+    at async upgrade (C:\Users\ADMiN\AppData\Local\npm-cache\_npx\eebb2d3a7d26a7f1\node_modules\@storybook\cli\dist\generate.js:354:3167)
+Unable to find storybook main.js config, skipping
+Unable to find storybook main.js config, skipping
+
+╭ Migration check ran with failures ─────────────────────────────────────────────────────────╮
+│                                                                                            │
+│                                                                                            │
+│   Failed migrations:                                                                       │
+│                                                                                            │
+│   nodejs-requirement:                                                                      │
+│   ❌ Unable to determine storybook version.                                                │
+│   🤔 Are you running automigrate from your project directory?                              │
+│                                                                                            │
+│   cra5:                                                                                    │
+│   ❌ Unable to determine storybook version.                                                │
+│   🤔 Are you running automigrate from your project directory?                              │
+│                                                                                            │
+│   storybook-binary:                                                                        │
+│   ❌ Unable to determine storybook version.                                                │
+│   🤔 Are you running automigrate from your project directory?                              │
+│                                                                                            │
+│   sb-scripts:                                                                              │
+│   ❌ Unable to determine storybook version.                                                │
+│   🤔 Are you running automigrate from your project directory?                              │
+│                                                                                            │
+│                                                                                            │
+│   You can find the full logs in                                                            │
+│   C:\Users\ADMiN\Desktop\workspace\socioPedia\client\migration-storybook.log               │
+│                                                                                            │
+│   ─────────────────────────────────────────────────                                        │
+│                                                                                            │
+│   If you'd like to run the migrations again, you can do so by running 'npx                 │
+│   storybook@next automigrate'                                                              │
+│                                                                                            │
+│   The automigrations try to migrate common patterns in your project, but might not         │
+│   contain everything needed to migrate to the latest version of Storybook.                 │
+│                                                                                            │
+│   Please check the changelog and migration guide for manual migrations and more            │
+│   information: https://storybook.js.org/migration-guides/7.0                               │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                  │
+│                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
