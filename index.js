@@ -16,6 +16,8 @@ import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
+import fileUpload from "express-fileupload";
+import { v2 as cloudinary } from "cloudinary";
 
 //CREATE A .env FILE WITH
 // MONGO_URL
@@ -35,20 +37,27 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+  secure: true,
+});
 
 /* FILE STORAGE */
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
+const storage = multer.diskStorage({});
 const upload = multer({ storage });
+const cloudUpload = async (req, res) => {
+  const response = await cloudinary.uploader.upload(req.file.path);
+};
 
 /* ROUTES WITH FILES */
-app.post("/auth/register", upload.single("picture"), register);
+app.post("/auth/register", upload.single("picture"), cloudUpload, register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
