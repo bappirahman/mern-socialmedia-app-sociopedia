@@ -15,7 +15,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 import CommentWidget from "./CommentWidget";
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+const REACT_APP_API_URL = "";
 
 const PostWidget = ({
   postId,

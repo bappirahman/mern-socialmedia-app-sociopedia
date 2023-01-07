@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+const REACT_APP_API_URL = "";
 
 const UserImage = ({ image, size = "60px" }) => {
   return (
