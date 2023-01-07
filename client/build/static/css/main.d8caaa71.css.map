@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.d8caaa71.css","mappings":"wHAEA,MACE,4BACF","sources":["index.css"],"sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap\");\n\n#root {\n  font-family: \"Rubik\", sans-serif;\n}\n"],"names":[],"sourceRoot":""}
