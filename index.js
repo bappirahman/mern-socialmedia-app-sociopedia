@@ -50,14 +50,21 @@ cloudinary.config({
 });
 
 /* FILE STORAGE */
-const storage = multer.diskStorage({});
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/assets");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
 const upload = multer({ storage });
 const cloudUpload = async (req, res) => {
-  const response = await cloudinary.uploader.upload(req.file.path);
+  const response = await cloudinary.uploader.upload("name");
 };
 
 /* ROUTES WITH FILES */
-app.post("/auth/register", upload.single("picture"), cloudUpload, register);
+app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
