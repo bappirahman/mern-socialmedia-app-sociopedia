@@ -15,7 +15,10 @@ export const register = async (req, res) => {
       location,
       occupation,
     } = req.body;
-
+    firstName = firstName.trim();
+    lastName = lastName.trim();
+    email = email.trim();
+    password = password.trim();
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
@@ -40,6 +43,8 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    email = email.trim();
+    password = password.trim();
     const user = await User.findOne({ email: email });
     if (!user)
       return res
