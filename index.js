@@ -18,6 +18,7 @@ import User from "./models/User.js";
 import Post from "./models/Post.js";
 import fileUpload from "express-fileupload";
 import { v2 as cloudinary } from "cloudinary";
+import os from "os";
 
 //CREATE A .env FILE WITH
 // MONGO_URL
