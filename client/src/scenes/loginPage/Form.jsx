@@ -59,7 +59,6 @@ const Form = () => {
     // SEND FORM INFO WITH IMAGE
     const formData = new FormData();
     for (let value in values) {
-      values[value] = values[value].trim();
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
@@ -74,8 +73,6 @@ const Form = () => {
     }
   };
   const login = async (values, onSubmitProps) => {
-    values.email = values.email.trim();
-    values.password = values.password.trim();
     const loggedInResponse = await fetch(`/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
