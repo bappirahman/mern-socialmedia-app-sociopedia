@@ -46,26 +46,27 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
-  secure: true,
 });
 
 /* FILE STORAGE */
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage });
-const cloudUpload = async (req, res) => {
-  const response = await cloudinary.uploader.upload("name");
+
+const cloudUpload = async (req, res, next) => {
+  const file = req.files.picture;
+  try {
+    const response = await cloudinary.uploader.upload(
+      file.tempFilePath,
+      (err, result) => console.log(result)
+    );
+    req.body.picturePath = response.url;
+    next();
+  } catch (err) {
+    res.status(500).json({ error: err.message, file: file });
+  }
 };
 
 /* ROUTES WITH FILES */
-app.post("/auth/register", upload.single("picture"), register);
-app.post("/posts", verifyToken, upload.single("picture"), createPost);
+app.post("/auth/register", cloudUpload, register);
+app.post("/posts", verifyToken, cloudUpload, createPost);
 
 /* ROUTES */
 app.use("/auth", authRoutes);
