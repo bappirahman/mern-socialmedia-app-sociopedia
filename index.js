@@ -48,7 +48,7 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
-  upload_prefix: `${tempDir}/cloudinary`,
+  upload_prefix: `${tempDir}`,
 });
 
 /* FILE STORAGE */
@@ -95,6 +95,6 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(tempDir)); //console.log(`Server Port: ${PORT}`)
   })
   .catch((error) => console.log(`${error} did not connect`));
