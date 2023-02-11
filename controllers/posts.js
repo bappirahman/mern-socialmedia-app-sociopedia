@@ -1,39 +1,13 @@
 import Post from "../models/Post.js";
 import User from "../models/User.js";
-import { v2 as cloudinary } from "cloudinary";
+
 
 /* CREATE */
 export const createPost = async (req, res) => {
   try {
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
-    // CLOUD IMAGE
-    cloudinary.config({
-      cloud_name: process.env.CLOUD_NAME,
-      api_key: process.env.API_KEY,
-      api_secret: process.env.API_SECRET,
-    });
-    let fileData = {};
-    if (req.file) {
-      // Save image to cloudinary
-      let uploadedFile;
-      try {
-        uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-          folder: "Sociopedia/post",
-          resource_type: "image",
-        });
-      } catch (error) {
-        res.status(500);
-        throw new Error("Image could not be uploaded");
-      }
 
-      fileData = {
-        fileName: req.file.originalname,
-        filePath: uploadedFile.secure_url,
-        fileType: req.file.mimetype,
-        fileSize: fileSizeFormatter(req.file.size, 2),
-      };
-    }
     const newPost = new Post({
       userId,
       firstName: user.firstName,
@@ -41,7 +15,7 @@ export const createPost = async (req, res) => {
       location: user.location,
       description,
       userPicturePath: user.picturePath,
-      picturePath: fileData.filePath,
+      picturePath,
       likes: {},
       comments: [],
     });
