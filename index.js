@@ -43,7 +43,18 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-const upload = multer({ storage });
+function fileFilter(req, file, cb) {
+  if (
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+}
+const upload = multer({ storage, fileFilter });
 
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("image"), register);
