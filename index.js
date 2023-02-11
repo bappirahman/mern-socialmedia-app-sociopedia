@@ -37,7 +37,7 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 /* FILE STORAGE */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads");
+    cb(null, "public/assets");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -57,8 +57,8 @@ function fileFilter(req, file, cb) {
 const upload = multer({ storage, fileFilter });
 
 /* ROUTES WITH FILES */
-app.post("/auth/register", upload.single("image"), register);
-app.post("/posts", verifyToken, upload.single("image"), createPost);
+app.post("/auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
 app.use("/auth", authRoutes);
