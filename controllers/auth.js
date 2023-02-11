@@ -15,14 +15,9 @@ export const register = async (req, res) => {
       location,
       occupation,
     } = req.body;
+
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-    // CLOUD IMAGE
-    cloudinary.config({
-      cloud_name: process.env.CLOUD_NAME,
-      api_key: process.env.API_KEY,
-      api_secret: process.env.API_SECRET,
-    });
 
     const newUser = new User({
       firstName,
