@@ -59,22 +59,7 @@ const Form = () => {
     // SEND FORM INFO WITH IMAGE
     const formData = new FormData();
     for (let value in values) {
-      if (value === "picture") {
-        const image = new FormData();
-        image.append(value, values[value]);
-        image.append("upload_preset", "qoa6wruj");
-        console.log({ name: value, file: values[value] });
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/bappi-rahman/image/upload`,
-          {
-            method: "POST",
-            body: image,
-          }
-        );
-        console.log(response);
-      } else {
-        formData.append(value, values[value]);
-      }
+      formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
     const savedUserResponse = await fetch(`/auth/register`, {
