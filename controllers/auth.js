@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import { v2 as cloudinary } from "cloudinary";
 
 /* REGISTER USER */
 export const register = async (req, res) => {
@@ -17,13 +18,39 @@ export const register = async (req, res) => {
     } = req.body;
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
+    // CLOUD IMAGE
+    cloudinary.config({
+      cloud_name: process.env.CLOUD_NAME,
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
+    });
+    let fileData = {};
+    if (req.file) {
+      // Save image to cloudinary
+      let uploadedFile;
+      try {
+        uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+          folder: "Sociopedia/user",
+          resource_type: "image",
+        });
+      } catch (error) {
+        res.status(500);
+        throw new Error("Image could not be uploaded");
+      }
 
+      fileData = {
+        fileName: req.file.originalname,
+        filePath: uploadedFile.secure_url,
+        fileType: req.file.mimetype,
+        fileSize: fileSizeFormatter(req.file.size, 2),
+      };
+    }
     const newUser = new User({
       firstName,
       lastName,
       email,
       password: passwordHash,
-      picturePath,
+      picturePath: fileData.filePath,
       friends,
       location,
       occupation,
